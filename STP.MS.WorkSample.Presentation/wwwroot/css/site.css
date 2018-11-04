@@ -1,0 +1,131 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Trebuchet MS';
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+}
+
+.validation-message {
+    display: none;
+    color: darkred;
+    margin-left: 256px;
+}
+
+.kjs-validation-message {
+    color: darkred;
+    margin-left: 8px;
+}
+/*.div-main {
+    margin-top: 32px;
+}*/
+
+.form-css {
+    margin-top: 20px;
+}
+
+.main-list table {
+    width: 40%;
+    margin-bottom: 8px;
+}
+
+.main-list th,td {
+    padding-left: 4px !important;
+}
+
+.main-list tbody tr:nth-child(odd) {
+    background: #e0e0e0;
+}
+
+.button-td {
+    width: 28px;
+}
+
+.edit-button {
+    width: 22px;
+    height: 20px;
+    background-image: url(../images/edit.png);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position-x: center;
+}
+
+.delete-button {
+    width: 22px;
+    height: 20px;
+    background-image: url(../images/delete.png);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position-x: center;
+}
+
+.view-button {
+    width: 22px;
+    height: 20px;
+    background-image: url(../images/view.png);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position-x: center;
+}
+
+.input-readonly {
+    background-color: transparent;
+    border: 0px;
+}
+
+.input-caption {
+    width: 128px;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.save-position {
+    margin: 16px 0px 0px 240px;
+}
+
+.new-position {
+    margin: 0px 0px 4px 400px;
+}
+
+
+ul.breadcrumb {
+    /*margin-left: 375px;*/
+    padding: 4px 6px;
+    list-style: none;
+    background-color: #eee;
+}
+
+ul.breadcrumb li {
+    display: inline;
+}
+
+ul.breadcrumb li.hidden {
+    display: none;
+}
+
+ul.breadcrumb li + li:before {
+    padding: 2px;
+    color: black;
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}

@@ -1,0 +1,45 @@
+﻿@page
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="div-main">
+    <p>List of companies:</p>
+    <div class="main-list" data-bind="simpleGrid: companyList, simpleGridTemplate:'custom_grid_template'"></div>
+    <div><span class="validation-message">Please enter a company name</span></div>
+    <form class="form-css" data-bind="submit: AddCompany">
+        New item:
+        <input data-bind='value: itemToAdd, valueUpdate: "afterkeydown"' />
+        <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+    </form>
+</div>
+
+<script type="text/html" id="custom_grid_template">
+    <table>
+        <thead>
+            <tr data-bind="foreach: columns">
+                <th data-bind="text: headerText"></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: itemsOnCurrentPage">
+            <tr data-bind="foreach: $parent.columns">
+
+                <!--ko ifnot: typeof rowText == 'object'-->
+                <td><input readonly class="input-readonly" data-bind="value: $parent[rowText], attr: { 'data-id': $parent['id'] }" /></td>
+                <!--/ko-->
+                <!--ko if: typeof rowText == 'object' && typeof rowText.edit == 'function'-->
+                <td class="button-td"><button class="edit-button" data-bind="click:rowText.edit($parent)" title="Edit"></button></td>
+                <!-- /ko -->
+                <!--ko if: typeof rowText == 'object' && typeof rowText.delete == 'function'-->
+                <td class="button-td"><button class="delete-button" data-bind="click:rowText.delete($parent)" title="Delete"></button></td>
+                <!-- /ko -->
+                <!--ko if: typeof rowText == 'object' && typeof rowText.view == 'function'-->
+                <td class="button-td"><button class="view-button" data-bind="click:rowText.view($parent)" title="Show Employees"></button></td>
+                <!-- /ko -->
+            </tr>
+        </tbody>
+    </table>
+</script>
+
+
+<script src="~/js/index.js" asp-append-version="true"></script>

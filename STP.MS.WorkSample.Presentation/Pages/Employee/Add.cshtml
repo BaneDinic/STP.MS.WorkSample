@@ -1,0 +1,26 @@
+﻿@page
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<div class="div-main">
+    <form data-bind="submit: AddEmployee">
+
+        <p>New employee:</p>
+
+        <div><span class="input-caption">Company: </span><span data-bind="text: companyName"></span></div>
+        <div><span class="input-caption">Name: </span><input data-bind="value: name" type="text"><span class="kjs-validation-message" data-bind='visible: name.hasError, text: name.validationMessage'></span></div>
+        <div><span class="input-caption">Experience Level: </span><select data-bind="options: allExperienceLevels, value: experienceLevel"></select></div>
+        <div><span class="input-caption">Starting Date: </span><input data-bind="datePicker: startingDate" type="date"><span class="kjs-validation-message" data-bind='visible: startingDate.hasError, text: startingDate.validationMessage'></span></div>
+        <div><span class="input-caption">Salary: </span><input data-bind="value: salary" type="text"></div>
+        <div><span class="input-caption">Vacation Days: </span><input data-bind="value: vacationDays" type="text"></div>
+
+
+        <button class="save-position" type="submit" data-bind="enable: name() && !isNaN(startingDate())">Save</button>
+    </form>
+</div>
+
+
+<script src="~/js/employee/add.js" asp-append-version="true"></script>
+

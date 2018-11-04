@@ -1,0 +1,42 @@
+﻿@page
+@{
+    ViewData["Title"] = "Employees";
+    Layout = "~/Pages/_Layout.cshtml";
+}
+
+<div class="div-main">
+    <p>List of employees for <span data-bind="text: companyName"></span>:</p>
+    <div><button class="new-position" onclick="location.href = '/employee/add?companyid=' + queryStringDict['companyid'] + '&companyname=' + queryStringDict['companyname'];">New</button></div>
+    <div class="main-list" data-bind="simpleGrid: employeeList, simpleGridTemplate:'custom_grid_template'"></div>
+</div>
+
+<script type="text/html" id="custom_grid_template">
+    <table>
+        <thead>
+            <tr data-bind="foreach: columns">
+                <th data-bind="text: headerText"></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: itemsOnCurrentPage">
+            <tr data-bind="foreach: $parent.columns">
+
+                <!--ko ifnot: typeof rowText == 'object'-->
+                <td><span data-bind="text: $parent[rowText], attr: { 'data-id': $parent['id'] }" ></span></td>
+                <!--/ko-->
+                <!--ko if: typeof rowText == 'object' && typeof rowText.edit == 'function'-->
+                <td class="button-td"><button class="edit-button" data-bind="click: rowText.edit($parent)" title="Edit"></button></td>
+                <!-- /ko -->
+                <!--ko if: typeof rowText == 'object' && typeof rowText.delete == 'function'-->
+                <td class="button-td"><button class="delete-button" data-bind="click: rowText.delete($parent)" title="Delete"></button></td>
+                <!-- /ko -->
+                <!--ko if: typeof rowText == 'object' && typeof rowText.date == 'function'-->
+                <td><span data-bind="text: rowText.date($parent)"></span></td>
+                <!-- /ko -->
+            </tr>
+        </tbody>
+    </table>
+</script>
+
+
+<script src="~/js/employee/list.js" asp-append-version="true"></script>
+

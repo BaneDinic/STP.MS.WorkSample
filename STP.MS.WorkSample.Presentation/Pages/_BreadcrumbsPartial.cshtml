@@ -1,0 +1,44 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li id="bcItem1">Home</li>
+        <li class="hidden" id="bcItem2">Employees</li>
+        <li class="hidden" id="bcItem3"></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var queryStringDict = parseQueryString();
+
+    if (location.href.includes("edit") || location.href.includes("add")) {
+        $("#bcItem1").html("<a href='/'>Home</a>");
+
+        $("#bcItem2").html('<a href="#">Employees</a>');
+        $("#bcItem2").removeClass("hidden");
+
+        $("#bcItem3").html("Details");
+        $("#bcItem3").removeClass("hidden");
+    }
+    else if (location.href.includes("list")) {
+        $("#bcItem1").html("<a href='/'>Home</a>");
+        $("#bcItem2").removeClass("hidden");
+        $("#bcItem3").addClass("hidden");
+    }
+    else {
+        $("#bcItem1").html("Home");
+        $("#bcItem2").addClass("hidden");
+        $("#bcItem3").addClass("hidden");
+    }
+
+    
+    function SetEmployeeBreadcrumb() {
+        if (typeof employeeViewModel !== 'undefined') {
+            $("#bcItem2").html('<a href="/employee/list?companyid=' + employeeViewModel.companyId() + '&companyname=' + employeeViewModel.companyName() + '">Employees</a>');
+        }
+    }
+    setTimeout(SetEmployeeBreadcrumb, 1500);
+
+</script>
+
+
+
