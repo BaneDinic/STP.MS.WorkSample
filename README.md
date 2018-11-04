@@ -1,0 +1,1 @@
+# STP.MS.WorkSample
